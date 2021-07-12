@@ -8,7 +8,7 @@ import ComponentLifeCycle from './Components/ComponentLifeCycle/ComponentLifeCyc
 
 function App() {
   return (
-    <div className="App">
+    <div className="App">Test
       {/* <ContactUs /> */}
       {/*  <FacebookLogin /> */}
       {/* <Timer /> */}
