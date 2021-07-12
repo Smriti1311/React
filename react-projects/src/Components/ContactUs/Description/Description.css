@@ -1,0 +1,19 @@
+.container{
+    border: 1px solid black;
+    margin: 5px;
+    background-color: lightgrey;
+  
+}
+
+.text{
+    text-align: justify;
+    width: 50%;
+    margin: auto;
+}
+
+.childComponent{
+    display: flex;
+    align-items: center;
+    margin:  auto;
+    width: 60%;
+}

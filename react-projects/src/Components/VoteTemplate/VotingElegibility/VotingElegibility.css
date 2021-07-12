@@ -1,0 +1,49 @@
+.container{
+    margin: 10px;
+    border:1px solid black;
+    width:70%;
+    display: inline-block;
+}
+
+
+
+.header{
+    margin: auto;
+    margin-top: 1%;
+    margin-bottom: 2%;
+    color: darksalmon;
+    padding: 10px;
+    background-color: lightyellow;
+    width:70%;
+   text-align:center;
+}
+
+.label{
+    color: orchid;
+    font-size: large;
+    font-weight: bold;
+}
+
+.input{
+    margin-top: 30px;
+    margin-bottom: 15px;
+    width: 150px;
+    height: 30px;
+    font-size: 16px;
+}
+
+.button{
+    padding: 0.5%;
+    margin: 1%;
+}
+
+.errorMessage{
+    color: red;
+    font-size: 19px;
+}
+
+.successMessage{
+    color:green;
+    font-size: 19px;
+    margin-bottom: 10px;
+}

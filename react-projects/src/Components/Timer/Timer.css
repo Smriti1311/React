@@ -1,0 +1,11 @@
+.Timer {
+    text-align: center;
+    border: 1px solid black;
+    height: 30px;
+    width: 500px;
+    margin: auto;
+    margin-top: 20px;
+    background-color: rgba(250, 235, 215, 0.87);
+    padding: 5px;
+  }
+  
