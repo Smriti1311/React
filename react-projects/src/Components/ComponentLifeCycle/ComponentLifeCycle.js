@@ -15,23 +15,38 @@ class ComponentLifeCycle extends Component {
     }
 
     componentDidMount = () => {
-        this.setState({name:'React Lifecycle Update Phase'},
-        console.log('componentDidMount==',this.state.name));
+        this.setState({ name: 'React Lifecycle Update Phase' },
+            console.log('componentDidMount==', this.state.name));
     }
 
 
 
     shouldComponentUpdate = () => {
-        console.log('should Component Update=',this.state.name);
-        if(this.state.name!=='React Lifecycle Update Phase'){
-        return true;
+        console.log('should Component Update=', this.state.name);
+        if (this.state.name !== 'React Lifecycle Update Phase') {
+            console.log('inside shouldcomponentupdate');
+            return true;
         }
-        return false;
+        console.log('should Component Update=', this.state.name);
+        return true;
     }
+
+    getSnapshotBeforeUpdate = () => {
+        console.log('getSnapshotBeforeUpdate');
+    }
+
+    componentDidUpdate = () => {
+        console.log('component Did Update==', this.state.name);
+    }
+
+    componentWillUnmount = () => {
+        console.log('component will unmount');
+    }
+
     render() {
-        const {name} = this.state;
-        console.log('render===',name);
-     
+        const { name } = this.state;
+        console.log('render===', name);
+
 
         return (<div>
             <h1>Component lifecycle</h1>

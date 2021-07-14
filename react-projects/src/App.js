@@ -13,7 +13,7 @@ function App() {
       {/*  <FacebookLogin /> */}
       {/* <Timer /> */}
       {/* <TodoList /> */}
-       <VoteTemplate /> 
+      {/* <VoteTemplate />  */} 
       <ComponentLifeCycle />
     </div>
   );

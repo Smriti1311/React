@@ -7,7 +7,28 @@
     list-style: none;
 }
 
-.tasklistItem{
+.tasklistItem{.taskList, .headerTask{
+    font-size: 20px;
+    width:40%;
+    margin: auto;
+    text-align: left;
+    text-transform: capitalize;
+    border: 1px solid rgba(95, 90, 90, 0.219);
+    padding: 5px;
+    padding-left: 20px;
+}
+
+ .headerTask{
+    background-color: rgb(245, 200, 140);
+}
+
+.delete{
+    color:red;
+    float: right;
+    width:20%;
+    cursor:pointer;
+    display: inline-block;
+}
     padding: 5px;
     padding-left: 20px;
     border: 1px solid rgba(95, 90, 90, 0.219);
