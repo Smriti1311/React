@@ -5,16 +5,18 @@ import Timer from './Components/Timer/Timer';
 import TodoList from './Components/ToDoList/TodoList';
 import VoteTemplate from './Components/VoteTemplate/VoteTemplate';
 import ComponentLifeCycle from './Components/ComponentLifeCycle/ComponentLifeCycle';
+import MapIterator from './Components/IterationUsingMap/MapIterator';
 
 function App() {
   return (
     <div className="App">
       {/* <ContactUs /> */}
-      {/*  <FacebookLogin /> */}
+      {/* <FacebookLogin /> */}
       {/* <Timer /> */}
       {/* <TodoList /> */}
-      {/* <VoteTemplate />  */} 
-      <ComponentLifeCycle />
+      {/* <VoteTemplate />  */}
+      {/* <ComponentLifeCycle /> */}
+      { <MapIterator /> }
     </div>
   );
 }

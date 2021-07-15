@@ -1,13 +1,4 @@
-.taskList{
-    font-size: 20px;
-    max-width:45%;
-    margin: auto;
-    text-align: left;
-    text-transform: capitalize;
-    list-style: none;
-}
-
-.tasklistItem{.taskList, .headerTask{
+.taskList, .headerTask{
     font-size: 20px;
     width:40%;
     margin: auto;
@@ -28,15 +19,4 @@
     width:20%;
     cursor:pointer;
     display: inline-block;
-}
-    padding: 5px;
-    padding-left: 20px;
-    border: 1px solid rgba(95, 90, 90, 0.219);
-}
-
-.delete{
-    color:red;
-    float: right;
-    width:20%;
-    cursor:pointer;
 }
