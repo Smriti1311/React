@@ -14,21 +14,28 @@ class DisplayUsers extends Component {
 
     static getDerivedStateFromProps = (props, state) => {
         console.log('get derived state from props');
-        // if(prevProp === props){ (unable to put condition on resetting of state here, I dont want to reset state when searching data)
+         if(state.displayUserData !== props.displayUserData && !state.searchText){
+             // We are do equality check with state displayUserData with props displayUserData if those are not equal and if there is no search text then we are setting the props.data means this condition will true for the first time only. 
+             // unable to put condition on resetting of state here, I dont want to reset state when searching data)
         return {
             displayUserData: props.displayUserData
         }
-        // }
+        }
         //return null;
     }
 
-    searchUserHandler = (user) => {
-        console.log('user=', user);
-        const displayUser = this.state.displayUserData.filter((userData) => (
-            userData.firstName.toLowerCase() === user
-        ));
+    searchUserHandler = (searchText) => {
+        console.log('searchText=', searchText);
+        let displayUser;
+        if (searchText) { // We will do filtering if searchText is there otherwise(no searchText) simple assign props.displayUserData data
+            displayUser = this.props.displayUserData.filter((userData) => (
+                userData.firstName.toLowerCase().includes(searchText) // We should not check for equality here instead of that we will check for like/contains search
+            ));
+        } else {
+            displayUser = this.props.displayUserData;
+        }
         console.log('displayUser==', displayUser);
-        this.setState({ displayUserData: displayUser });
+        this.setState({ displayUserData: displayUser, searchText: searchText });
     }
 
     render() {
