@@ -8,6 +8,7 @@ import ComponentLifeCycle from './Components/ComponentLifeCycle/ComponentLifeCyc
 import MapIterator from './Components/IterationUsingMap/MapIterator';
 
 function App() {
+  console.log('App component');
   return (
     <div className="App">
       {/* <ContactUs /> */}

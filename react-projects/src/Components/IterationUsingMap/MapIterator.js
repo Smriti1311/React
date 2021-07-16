@@ -3,28 +3,25 @@ import DisplayUsers from './DisplayUsers';
 
 class MapIterator extends Component {
     state = {
-        userData:[]
-
+        userData: []
     }
 
-     componentDidMount = () => {
+    componentDidMount = () => {
+        console.log('component did mount');
         fetch('/media/sampleData.json')
-        .then((response) => response.json())
-        .then((userData)=>{
-            console.log(userData.users);
-            this.setState({userData:userData.users});
-        })
+            .then((response) => response.json())
+            .then((userData) => {
+                this.setState({ userData: userData.users });
+            })
     }
 
     render() {
-       // const[userData] = this.state.userData;
-        console.log(this.state.userData);
+       // console.log('Map Iterator');
         return (
             <div className='container'>
                 <h1> List of Users</h1>
                 <DisplayUsers displayUserData={this.state.userData} />
             </div>
-
         )
     }
 }
