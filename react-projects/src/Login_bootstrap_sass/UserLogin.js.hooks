@@ -1,0 +1,101 @@
+import React, { useState } from 'react';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+
+const UserLogin = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [checkMeOut, toggleCheckMeOut] = useState(false);
+    const [errorMsg, setErrorMsg] = useState({});
+
+    const setEmailHandler = (event) => {
+        setEmail(event.target.value);
+        validate();
+    }
+
+    const setPasswordHandler = (event) => {
+        setPassword(event.target.value);
+    }
+
+    const toggleCheckMeOutHandler = (event) => {
+        toggleCheckMeOut(!checkMeOut);
+    }
+
+    const validate = () => {
+        setErrorMsg({test: 'test'});
+        console.log('validate component');
+        if (!email) {
+            console.log('email');
+            setErrorMsg( {Email:'Email: Please enter Email Address'});
+        }
+        else if (email && !new RegExp('^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})').test(email)) {
+            setErrorMsg({...errorMsg,Email:'Email: Please enter a valid Email Address'});
+        }
+        else {
+            console.log('email');
+            setErrorMsg({ ...errorMsg, Email: '' });
+        }
+
+        if (!password) {
+            setErrorMsg({...errorMsg, Password: ' Password: Enter Password' });
+        }
+        else if (password.match(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8})$/)) {
+            setErrorMsg({ ...errorMsg, Password: 'Password should be of 8 charater' });
+        }
+        else {
+            setErrorMsg({ ...errorMsg, Password: '' })
+        }
+
+    }
+
+const loginSubmitHandler = (event) => {
+    event.preventDefault();
+    console.log(email, password, checkMeOut);
+    validate();
+    console.log('errorMsg',errorMsg);
+}
+
+return (
+    <div className='container'>
+        <div className='jumbotron'>
+            <h1>Please Login to proceed</h1>
+        </div>
+        <Form onSubmit={loginSubmitHandler}>
+            <Form.Group className="my-3" style={{ textAlign: 'left' }} controlId='formBasicEmail'>
+                <Form.Label>Email Address</Form.Label>
+                <Form.Control type='text'
+                    placeholder='Enter Email'
+                    name='email'
+                    value={email}
+                    onChange={setEmailHandler} />
+                {errorMsg.Email ? <Form.Text>{errorMsg.Email}</Form.Text> :
+                    <Form.Text className="text-muted">
+                        We'll never share your email with anyone else.
+                    </Form.Text>}
+            </Form.Group>
+
+            <Form.Group className="my-3" controlId='formBasicPassword' style={{ textAlign: 'left' }}>
+                <Form.Label >Password</Form.Label>
+                <Form.Control type='password'
+                    placeholder='Password'
+                    name='password'
+                    value={password}
+                    onChange={setPasswordHandler} />
+                {errorMsg.Password && <Form.Text>{errorMsg.Password}</Form.Text>}
+            </Form.Group>
+
+            <Form.Group className="my-3" controlId='formBasicCheckbox' style={{ textAlign: 'left' }}>
+                <Form.Check type='checkbox'
+                    label='Check me out'
+                    onChange={toggleCheckMeOutHandler}
+                    checked={checkMeOut} />
+            </Form.Group>
+
+            <Button type='Submit' className='btn btn-primary my-3' >Submit</Button>
+        </Form>
+
+    </div>
+)
+}
+
+export default UserLogin;

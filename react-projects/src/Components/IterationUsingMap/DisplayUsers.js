@@ -6,13 +6,14 @@ class DisplayUsers extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            displayUserData: '' //Tried to add props.displayUserData here first, but its not working on refreshing browser, coz instead of initial mounting, its re-rendering the components
+            displayUserData: props.displayUserData //Tried to add props.displayUserData here first, but its not working on refreshing browser, coz instead of initial mounting, its re-rendering the components
         }
         console.log('in constructor=', this.state.displayUserData);
+        
     }
 
 
-    static getDerivedStateFromProps = (props, state) => {
+   /* static getDerivedStateFromProps = (props, state) => {
         console.log('get derived state from props');
          if(state.displayUserData !== props.displayUserData && !state.searchText){
              // We are do equality check with state displayUserData with props displayUserData if those are not equal and if there is no search text then we are setting the props.data means this condition will true for the first time only. 
@@ -22,9 +23,10 @@ class DisplayUsers extends Component {
         }
         }
         //return null;
-    }
+    } */
 
     searchUserHandler = (searchText) => {
+        
         console.log('searchText=', searchText);
         let displayUser;
         if (searchText) { // We will do filtering if searchText is there otherwise(no searchText) simple assign props.displayUserData data

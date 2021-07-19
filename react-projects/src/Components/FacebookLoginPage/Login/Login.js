@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import CreateAccount from '../CreateAccount/CreateAccount';
 import './Login.css';
 
 const Login = () => {
     const [emailOrPhone, setEmailOrPhone] = useState('Email address or phone number');
     const [password, setPassword] = useState('Password');
-    const [showText, setShowText] = useState('true')
+    const [showText, setShowText] = useState(true);
+    const [createAccount, setcreateAccount] = useState(false);
 
     const setEmailOrPhoneHandler = (event) => {
         setEmailOrPhone(event.target.value);
@@ -23,6 +25,10 @@ const Login = () => {
         setShowText(false);
     }
 
+    const createAccountHandler = (event) => {
+        setcreateAccount(true);
+    }
+
     return (
         <div className='LoginContainer'>
             <form>
@@ -32,7 +38,8 @@ const Login = () => {
             </form>
              <a className='Anchor' href='//localhost:3000'> Forgot password?</a>
              <hr style={{color:'lightgrey'}}></hr>
-            <div>  <button className='CreateButton'>Create New Account</button></div>
+            <div>  <button className='CreateButton mb-3' onClick={createAccountHandler}>Create New Account</button></div>
+            {createAccount && <CreateAccount />}
             <p style={{textAlign:'center'}}><strong>Create a Page</strong> for a celebrity, band or business </p>
         </div>
     )
