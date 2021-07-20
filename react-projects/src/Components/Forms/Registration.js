@@ -32,7 +32,10 @@ class CreateAccount extends Component {
                     message:'FirstName cannot be blank'},
                 length: { minimum: 3 },
                 type: "string",
-               
+                format:{
+                    pattern:'[a-z]+',
+                    message: ' should contain letters only'
+                }               
             },
             lastName: {
                 presence: true,
@@ -62,7 +65,7 @@ class CreateAccount extends Component {
         let validateResult = this.validateItem(key, value);
         console.log('validate result==', validateResult);
         if (validateResult) {
-            errorMsg[key] = validateResult;
+            errorMsg[key] = validateResult[key];
         }
         else {
             errorMsg[key] = '';
@@ -114,7 +117,7 @@ class CreateAccount extends Component {
                 <Form className=' col-lg-6' onSubmit={this.submitHandler}>
                     <FormGroup className='my-3'>
                         <FormControl className='formGroup' type='input' name='firstName' placeholder='First name' value={firstName} onChange={this.setValueHandler} ></FormControl>
-                        {errorMsg.firstName && <FormText className="form-text text-muted mt-2">{errorMsg.firstName.firstName.toString()}</FormText>}
+                        {errorMsg.firstName && <FormText className="form-text text-muted mt-2">{errorMsg.firstName.toString()}</FormText>}
                     </FormGroup>
                     <FormGroup className='mb-3 '>
                         <FormControl type='input' name='lastName' placeholder='Last name' value={lastName} onChange={this.setValueHandler} ></FormControl>
@@ -129,11 +132,11 @@ class CreateAccount extends Component {
                         {errorMsg.phoneNumber && <FormText className="form-text text-muted mt-2">{errorMsg.phoneNumber.phoneNumber.toString()}</FormText>}
                     </FormGroup>
                     <FormGroup className='mb-3'>
-                        <FormControl type='input' name='password' placeholder='password' value={password} onChange={this.setValueHandler} ></FormControl>
+                        <FormControl type='password' name='password' placeholder='password' value={password} onChange={this.setValueHandler} ></FormControl>
                         {errorMsg.password && <FormText className="form-text text-muted mt-2">{errorMsg.password.password.toString()}</FormText>}
                     </FormGroup>
                     <FormGroup className='mb-3'>
-                        <FormControl type='input' name='confirmPassword' placeholder='confirmPassword' value={confirmPassword} onChange={this.setValueHandler} ></FormControl>
+                        <FormControl type='password' name='confirmPassword' placeholder='confirmPassword' value={confirmPassword} onChange={this.setValueHandler} ></FormControl>
                         {errorMsg.confirmPassword && <FormText className="form-text text-muted mt-2">{errorMsg.confirmPassword.confirmPassword.toString()}</FormText>}
                     </FormGroup>
                     <FormGroup className='mb-3'>
