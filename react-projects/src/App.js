@@ -9,6 +9,7 @@ import MapIterator from './Components/IterationUsingMap/MapIterator';
 import UserLogin from './Login_bootstrap_sass/UserLogin';
 import Form from './Components/Forms/Form';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ProductList from './Components/Hooks/ProductList';
 
 function App() {
   console.log('App component');
@@ -22,7 +23,8 @@ function App() {
       {/* <ComponentLifeCycle /> */}
       {/* { <MapIterator /> } */}
       {/* <UserLogin /> */}
-      <Form />
+      { <Form /> }
+      { /*<ProductList /> */ }
     </div>
   );
 }

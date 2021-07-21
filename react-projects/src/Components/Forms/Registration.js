@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import './Registration.scss';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { ButtonGroup, Dropdown, DropdownButton, FormCheck, FormText } from 'react-bootstrap';
-import { FormControl, FormGroup, FormLabel } from 'react-bootstrap';
-import DropdownToggle from 'react-bootstrap/esm/DropdownToggle';
+import { FormControl, FormGroup, FormLabel, FormCheck, FormText } from 'react-bootstrap';
 import validate from "validate.js";
 
 class CreateAccount extends Component {
@@ -22,32 +20,38 @@ class CreateAccount extends Component {
                 month: '',
                 year: ''
             },
+            birthday_picker : {
+                day : [],
+                month : [],
+                year : []
+            },
             gender: 'female',
             errorMsg: {}
         }
 
         this.constraints = {
             firstName: {
-                presence:{
-                    message:'FirstName cannot be blank'},
+                presence: {
+                    message: 'FirstName cannot be blank'
+                },
                 length: { minimum: 3 },
                 type: "string",
-                format:{
-                    pattern:'[a-z]+',
+                format: {
+                    pattern: '[a-z]+',
                     message: ' should contain letters only'
-                }               
+                }
             },
             lastName: {
                 presence: true,
                 length: { minimum: 3 },
                 type: "string"
             },
-            email:{
-                email:true
+            email: {
+                email: true
             },
             password: {
-                presence:true,
-                length:{
+                presence: true,
+                length: {
                     minimum: 6,
                     message: 'must be atleast 6 character'
                 }
@@ -56,6 +60,15 @@ class CreateAccount extends Component {
                 equality: "password"
             }
         }
+    }
+
+    componentDidMount = () => {
+        fetch('/media/BirthDay.json')
+        .then((response)=>response.json())
+        .then((BirthDayPicker)=>{
+            this.setState({birthday_picker:BirthDayPicker});
+            console.log(BirthDayPicker.birthday_picker);
+        })
     }
 
     setValueHandler = (event) => {
@@ -70,14 +83,14 @@ class CreateAccount extends Component {
         else {
             errorMsg[key] = '';
         }
-        console.log('error=',errorMsg);
+        console.log('error=', errorMsg);
         this.setState({ [key]: value, errorMsg: errorMsg });
     }
 
     validateItem = (field, value) => {
         let object = {};
         object[field] = value;
-        if(field==='confirmPassword'){
+        if (field === 'confirmPassword') {
             object['password'] = this.state.password;
         }
         let constraint = this.constraints[field];
@@ -102,11 +115,11 @@ class CreateAccount extends Component {
     submitHandler = (event) => {
         event.preventDefault();
         // console.log(this.state);
-        if(!this.state.errorMsg){
-            console.log('Login Successful',this.state);
+        if (!this.state.errorMsg) {
+            console.log('Login Successful', this.state);
         }
-        else{
-            console.log('Login unSuccessful',this.state.errorMsg);
+        else {
+            console.log('Login unSuccessful', this.state.errorMsg);
         }
     }
 
@@ -139,21 +152,26 @@ class CreateAccount extends Component {
                         <FormControl type='password' name='confirmPassword' placeholder='confirmPassword' value={confirmPassword} onChange={this.setValueHandler} ></FormControl>
                         {errorMsg.confirmPassword && <FormText className="form-text text-muted mt-2">{errorMsg.confirmPassword.confirmPassword.toString()}</FormText>}
                     </FormGroup>
-                    <FormGroup className='mb-3'>
-                        <FormLabel>Birthday</FormLabel>
-                        <DropdownButton id='birtday' name='birthday' title='Birthday' value={birthday.day} onSelect={this.setBithdayHandler}>
-                            <Dropdown.Item eventKey='Janua hh' title='Jan'>Jan</Dropdown.Item>
-                            <Dropdown.Item eventKey='Febu' title='Feb'>Feb</Dropdown.Item>
-                            <Dropdown.Item eventKey='MArch' title='Mar'>Mar</Dropdown.Item>
-                            <Dropdown.Item eventKey='April' title='Apr'>Apr</Dropdown.Item>
-                            <Dropdown.Item eventKey='May' title='May'>May</Dropdown.Item>
-                            <Dropdown.Item eventKey='June' title='Jun'>Jun</Dropdown.Item>
-                            <Dropdown.Item eventKey='July' title='Jul'>Jul</Dropdown.Item>
-                            <Dropdown.Item eventKey='September' title='Sep'>Sep</Dropdown.Item>
-                            <Dropdown.Item eventKey='October' title='Oct'>Oct</Dropdown.Item>
-                            <Dropdown.Item eventKey='November' title='Nov'>Nov</Dropdown.Item>
-                            <Dropdown.Item eventKey='December' title='Dec'>Dec</Dropdown.Item>
-                        </DropdownButton>
+                    <FormGroup>
+                        <FormControl as='select' name='birthMonth' onChange={this.setValueHandler}>
+                            <option defaultValue='BirthMonth' >BirthMonth</option>
+                            <option value='1'>Jan</option>
+                            <option value='2'>Feb</option>
+                        </FormControl>
+                    </FormGroup>
+                    <FormGroup>
+                        <FormControl as='select' name='birthDay' onChange={this.setValueHandler}>
+                            <option defaultValue='BirthDay'>BirthDay</option>
+                            <option value='1'>1</option>
+                            <option value='2'>2</option>
+                        </FormControl>
+                    </FormGroup>
+                    <FormGroup>
+                        <FormControl as='select' name='birthYear' onChange={this.setValueHandler}>
+                            <option defaultValue='BirthYear'>BirthYear</option>
+                            <option value='2000'>2000</option>
+                            <option value='2001'>2001</option>
+                        </FormControl>
                     </FormGroup>
                     <FormGroup className='mb-3'>
                         <FormLabel className='mr-3'>Gender</FormLabel>
