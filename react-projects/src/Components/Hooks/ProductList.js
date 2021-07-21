@@ -1,22 +1,33 @@
 import React, { useState, useEffect } from 'react';
 
 const ProductList = () => {
-    const [productList,setProductList] = useState();
+    const [productList,setProductList] = useState('');
 
     useEffect(() => {
         fetch('/media/products.json')
         .then((response) => response.json())
-        .then((productList) => {
-            setProductList(productList.productList);
-            console.log(productList);
+        .then((productsList) => {
+           let productList = productsList.productsList;
+           console.log(productsList);
+            setProductList(productList);
         })
-        console.log("A", productList);
+        console.log(productList);
+
     })
 
+    useEffect(()=>{
+        console.log(productList);
+    })
 
     return(
         <div>
-            {productList}
+            <h1>Product List</h1>
+         {productList && 
+                 productList.map((product)=>(
+                    <div>{product.category}</div>
+                 ))
+             }
+         
         </div>
     )
 }
