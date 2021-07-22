@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import DisplayProducts from './DisplayProduct';
+import DisplayProduct from './DisplayProduct';
 
 const ProductList = () => {
     const [productList,setProductList] = useState('');
@@ -10,24 +12,14 @@ const ProductList = () => {
            let productList = productsList.productsList;
            console.log(productsList);
             setProductList(productList);
-        })
+        });
         console.log(productList);
-
-    })
-
-    useEffect(()=>{
-        console.log(productList);
-    })
+    }, [productList.length])
 
     return(
         <div>
             <h1>Product List</h1>
-         {productList && 
-                 productList.map((product)=>(
-                    <div>{product.category}</div>
-                 ))
-             }
-         
+            <DisplayProducts productList={productList} />
         </div>
     )
 }
