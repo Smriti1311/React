@@ -23,8 +23,8 @@ function App() {
       {/* <ComponentLifeCycle /> */}
       {/* { <MapIterator /> } */}
       {/* <UserLogin /> */}
-      { <Form /> }
-      { /*<ProductList /> */ }
+      {/* <Form />*/ }
+      { <ProductList /> }
     </div>
   );
 }

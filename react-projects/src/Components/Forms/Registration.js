@@ -20,10 +20,10 @@ class CreateAccount extends Component {
                 month: '',
                 year: ''
             },
-            birthday_picker : {
-                day : [],
-                month : [],
-                year : []
+            birthdayPicker: {
+                day: [],
+                month: [],
+                year: []
             },
             gender: 'female',
             errorMsg: {}
@@ -64,11 +64,12 @@ class CreateAccount extends Component {
 
     componentDidMount = () => {
         fetch('/media/BirthDay.json')
-        .then((response)=>response.json())
-        .then((BirthDayPicker)=>{
-            this.setState({birthday_picker:BirthDayPicker});
-            console.log(BirthDayPicker.birthday_picker);
-        })
+            .then((response) => response.json())
+            .then((BirthDayPicker) => {
+                console.log(BirthDayPicker.birthDay_picker[0].day);
+                this.setState({ birthdayPicker: BirthDayPicker.birthDay_picker[0] });
+
+            })
     }
 
     setValueHandler = (event) => {
@@ -124,7 +125,8 @@ class CreateAccount extends Component {
     }
 
     render() {
-        const { firstName, lastName, email, phoneNumber, password, confirmPassword, birthday, gender, errorMsg } = this.state;
+        const { firstName, lastName, email, phoneNumber, password, confirmPassword, birthdayPicker, gender, errorMsg } = this.state;
+        // console.log('birthdaypicker in render=',birthdayPicker.day);
         return (
             <div>
                 <Form className=' col-lg-6' onSubmit={this.submitHandler}>
@@ -152,25 +154,24 @@ class CreateAccount extends Component {
                         <FormControl type='password' name='confirmPassword' placeholder='confirmPassword' value={confirmPassword} onChange={this.setValueHandler} ></FormControl>
                         {errorMsg.confirmPassword && <FormText className="form-text text-muted mt-2">{errorMsg.confirmPassword.confirmPassword.toString()}</FormText>}
                     </FormGroup>
-                    <FormGroup>
-                        <FormControl as='select' name='birthMonth' onChange={this.setValueHandler}>
+                    <FormGroup className = 'form-inline'>
+                        <FormControl className='mr-3' as='select' name='birthMonth' onChange={this.setValueHandler}>
                             <option defaultValue='BirthMonth' >BirthMonth</option>
-                            <option value='1'>Jan</option>
-                            <option value='2'>Feb</option>
+                            {birthdayPicker.month.map((month) => (
+                                <option key={month} value={month}>{month}</option>
+                            ))}
                         </FormControl>
-                    </FormGroup>
-                    <FormGroup>
-                        <FormControl as='select' name='birthDay' onChange={this.setValueHandler}>
+                        <FormControl className='mr-3' as='select' name='birthDay' onChange={this.setValueHandler}>
                             <option defaultValue='BirthDay'>BirthDay</option>
-                            <option value='1'>1</option>
-                            <option value='2'>2</option>
+                            {birthdayPicker.day.map((day) => (
+                                <option key={day} value={day}>{day}</option>
+                            ))}
                         </FormControl>
-                    </FormGroup>
-                    <FormGroup>
                         <FormControl as='select' name='birthYear' onChange={this.setValueHandler}>
                             <option defaultValue='BirthYear'>BirthYear</option>
-                            <option value='2000'>2000</option>
-                            <option value='2001'>2001</option>
+                           { birthdayPicker.year.map((year) => (
+                                <option key={year} value={year}>{year}</option>
+                            ))}
                         </FormControl>
                     </FormGroup>
                     <FormGroup className='mb-3'>
