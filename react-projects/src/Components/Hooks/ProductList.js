@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import DisplayProducts from './DisplayProduct';
+import DisplayProduct from './DisplayProduct';
+import SearchProducts from './SearchProduct';
 
 const ProductList = () => {
     const [productList,setProductList] = useState('');
+   // const [searchValues,setSearchValues] = useState({searchText:'', inStockOnly:''});
+   const [ searchText, setSearchText] = useState('');
+    const [inStockOnly, setInStockOnly] = useState('')
 
     useEffect(() => {
         fetch('/media/products.json')
@@ -10,24 +16,25 @@ const ProductList = () => {
            let productList = productsList.productsList;
            console.log(productsList);
             setProductList(productList);
-        })
-        console.log(productList);
+        });
+    }, [productList.length])
 
-    })
+    const searchProductHandler = (searchText,inStockOnly) => {
+        console.log(searchText,inStockOnly);
+        setSearchText(searchText);
+        setInStockOnly(inStockOnly);
+      //  setSearchValues({...searchValues,[key]:value});
+    }
 
-    useEffect(()=>{
-        console.log(productList);
-    })
+    const deleteProductHandler = () => {
+        
+    }
 
     return(
         <div>
-            <h1>Product List</h1>
-         {productList && 
-                 productList.map((product)=>(
-                    <div>{product.category}</div>
-                 ))
-             }
-         
+            <h1 className= 'text-center'>Product List</h1>
+            <SearchProducts searchTextChanged= {searchProductHandler} />
+            <DisplayProducts productList={productList}  searchText = {searchText} inStockOnly= {inStockOnly} />
         </div>
     )
 }

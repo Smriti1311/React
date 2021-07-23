@@ -10,7 +10,7 @@ import UserLogin from './Login_bootstrap_sass/UserLogin';
 import Form from './Components/Forms/Form';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ProductList from './Components/Hooks/ProductList';
-import ContextProvider from './Components/ContextExample_Class/ContextProvider';
+import ContextProvider from './Components/ContextExample/ContextProvider';
 
 function App() {
   console.log('App component');
