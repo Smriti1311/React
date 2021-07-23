@@ -10,6 +10,7 @@ import UserLogin from './Login_bootstrap_sass/UserLogin';
 import Form from './Components/Forms/Form';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ProductList from './Components/Hooks/ProductList';
+import ContextProvider from './Components/ContextExample_Class/ContextProvider';
 
 function App() {
   console.log('App component');
@@ -23,8 +24,9 @@ function App() {
       {/* <ComponentLifeCycle /> */}
       {/* { <MapIterator /> } */}
       {/* <UserLogin /> */}
-      {/* <Form />*/ }
-      { <ProductList /> }
+      {/* <Form /> */ }
+      {/* <ProductList /> */ }
+      <ContextProvider />
     </div>
   );
 }
