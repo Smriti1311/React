@@ -19,9 +19,9 @@ class ContextProvider extends Component {
                     <br></br>
                     Version: {this.state.version}
                 </div>
-                <NameContext.Provider value = {this.state.name}>
-                    <VersionContext.Provider value = {this.state.version}>
-                    <Intermediate />
+                <NameContext.Provider value={this.state.name}>
+                    <VersionContext.Provider value={this.state.version}>
+                        <Intermediate name={this.state.name} version={this.state.version} />
                     </VersionContext.Provider>
                 </NameContext.Provider>
             </div>

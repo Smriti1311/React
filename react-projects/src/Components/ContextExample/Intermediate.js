@@ -5,7 +5,7 @@ import ContextConsumerUsingHooks from './ContextConsumerUsingHook';
 const Intermediate = (props) => {
         return(
             <div>
-                Intermedite Div
+                Intermedite Div(using props)
                 <br></br>
                 <div className='container'>
                     Name : {props.name}
