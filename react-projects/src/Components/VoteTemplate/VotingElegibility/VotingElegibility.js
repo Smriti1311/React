@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import './VotingElegibility.css';
 
 const VotingElegibility = () => {
@@ -6,6 +7,7 @@ const VotingElegibility = () => {
     const [voterAge, setVoterAge] = useState('');
     const [votedMsg, setVotedMsg] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
+    const history = useHistory();
 
     const voterAgeHandler = (event) => {
         setVoterAge(event.target.value);
@@ -23,6 +25,8 @@ const VotingElegibility = () => {
 
     const hasVotedHandler = () => {
         setVotedMsg('You have voted successfully');
+        history.push('/votingDone');
+
     }
 
     return (
