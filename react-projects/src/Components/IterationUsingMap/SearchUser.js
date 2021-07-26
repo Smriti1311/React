@@ -9,8 +9,6 @@ const SearchUser = (props) => {
         props.searchUser(event.target.value.toLowerCase());
     }
 
-    console.log('searchUser=',searchUser);
-
     return (
         <div className='input-group mb-3'>
             <input className='form-control'

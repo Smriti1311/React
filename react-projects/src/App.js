@@ -23,12 +23,12 @@ function App() {
       {/* <TodoList /> */}
       {/* <VoteTemplate />  */}
       {/* <ComponentLifeCycle /> */}
-      {/* { <MapIterator /> } */}
+     <MapIterator /> 
       {/* <UserLogin /> */}
       {/* <Form /> */ }
       {/* <ProductList /> */ }
      {/* <ContextProvider /> */}
-     <ContextProvider />
+     {/*<ContextProvider /> */}
     </div>
   );
 }
