@@ -2,6 +2,7 @@ import {React} from 'react';
 import { Container, Navbar, Nav } from 'react-bootstrap';
 import {Link, Route, Switch, useHistory, useRouteMatch} from 'react-router-dom';
 import ComponentLifeCycle from './../ComponentLifeCycle/ComponentLifeCycle';
+import MapIterator from './../IterationUsingMap/MapIterator';
 
 const ReactTopics = () => {
     const history = useHistory();
@@ -14,16 +15,16 @@ const ReactTopics = () => {
             <Navbar>
                 <Container>
                     <Nav className='flex-column'>
-                        <Nav.Link as={Link} to={`${pathHist}/componentLifeCycle`}> Component LifeCycle</Nav.Link>
-
+                        <Nav.Link as={Link} to={`${path}/componentLifeCycle`}> Component LifeCycle</Nav.Link>
+                        <Nav.Link as={Link} to={`${path}/mapIterator`}>User Data</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>
             <Switch>
-                <Route  path={`${pathHist}/componentLifeCycle`} component={ComponentLifeCycle}/>
+                <Route  path={`${path}/componentLifeCycle`} component={ComponentLifeCycle}/>
+                <Route  path={`${path}/mapIterator`} component={MapIterator}/>
             </Switch>
-           {/* {<ComponentLifeCycle />}
-            { < MapIterator />}
+           {/* 
             {<UserLogin />}
             {<Form />}
             {<ProductList />}
