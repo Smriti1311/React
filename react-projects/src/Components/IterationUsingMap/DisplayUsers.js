@@ -2,8 +2,16 @@ import React, { Component } from 'react';
 
 class DisplayUsers extends Component {
     render() {
-        const displayUserData = this.props.displayUserData.map((user) => (
-            <tr key={user.userId}>
+        const {searchText, displayUserData} = this.props;
+        const displayUsersData = displayUserData.map((user) => {
+            if (searchText){
+                if(user.firstName.toLowerCase().indexOf(searchText) === -1 
+                    && user.lastName.toLowerCase().indexOf(searchText) === -1 
+                    && user.phoneNumber.indexOf(searchText) === -1 
+                    && user.emailAddress.indexOf(searchText) === -1 ) {
+                    return;
+                }}
+          return  <tr key={user.userId}>
                 <th scope='row'>
                     {user.userId}
                 </th>
@@ -20,7 +28,7 @@ class DisplayUsers extends Component {
                     {user.emailAddress}
                 </td>
             </tr>
-        ))
+        })
 
         let displayData = [];
         if (this.props.displayUserData) {
@@ -46,7 +54,7 @@ class DisplayUsers extends Component {
                     </tr>
                 </thead>
                 <tbody>
-                    {displayUserData}
+                    {displayUsersData}
                 </tbody>
             </table>
         }

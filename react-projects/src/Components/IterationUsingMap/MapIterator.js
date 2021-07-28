@@ -1,31 +1,30 @@
 import React, { Component } from 'react';
 import DisplayUsers from './DisplayUsers';
 import SearchUser from './SearchUser';
-import AddUser from './AddUser'
+import AddUser from './AddUser';
+import axios from 'axios';
 
 class MapIterator extends Component {
     state = {
-        userData: []
+        userData: [],
+        searchText: ''
     }
 
     componentDidMount = () => {
         console.log('component did mount');
-        fetch('/media/sampleData.json')
-            .then((response) => response.json())
+        axios.get('https://react-fceb0-default-rtdb.firebaseio.com/users.json')
             .then((userData) => {
-                this.setState({ userData: userData.users });
+                console.log(userData.data);
+                if(userData.data){
+                this.setState({ userData: userData.data });
+                }
             })
     }
 
     searchUserHandler = (searchText) => {
         console.log('searchText=', searchText);
-        let displayUser;
-        if (searchText) {
-            displayUser = this.state.userData.filter((userData) => (
-                userData.firstName.toLowerCase().includes(searchText)
-            ));
-            this.setState({ userData: displayUser });
-        }
+       
+        this.setState({ searchText: searchText });
     }
 
     render() {
@@ -34,7 +33,7 @@ class MapIterator extends Component {
             <div className='container'>
                 <h1> List of Users</h1>
                 <SearchUser searchUser={this.searchUserHandler} />
-                <DisplayUsers displayUserData={this.state.userData} />
+                <DisplayUsers displayUserData={this.state.userData} searchText={this.state.searchText}/>
                 <AddUser />
             </div>
         )
