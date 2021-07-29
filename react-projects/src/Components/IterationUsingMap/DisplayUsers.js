@@ -8,7 +8,7 @@ class DisplayUsers extends Component {
                 if(user.firstName.toLowerCase().indexOf(searchText) === -1 
                     && user.lastName.toLowerCase().indexOf(searchText) === -1 
                     && user.phoneNumber.indexOf(searchText) === -1 
-                    && user.emailAddress.indexOf(searchText) === -1 ) {
+                    && user.email.indexOf(searchText) === -1 ) {
                     return;
                 }}
           return  <tr key={user.userId}>
@@ -25,7 +25,7 @@ class DisplayUsers extends Component {
                     {user.phoneNumber}
                 </td>
                 <td>
-                    {user.emailAddress}
+                    {user.email}
                 </td>
             </tr>
         })

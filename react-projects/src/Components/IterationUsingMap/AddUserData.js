@@ -11,7 +11,7 @@ class AddUserData extends Component {
         phoneNumber: ''
     }
 
-    setValueHandler = (event) => {
+      setValueHandler = (event) => {
         let key = event.target.name;
         let value = event.target.value;
         this.setState({ [key]: value });
@@ -30,7 +30,7 @@ class AddUserData extends Component {
         .then(res => {
             console.log(res)
         })
-
+            this.props.hideModal();
     }
 
     render() {

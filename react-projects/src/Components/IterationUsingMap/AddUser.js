@@ -1,26 +1,33 @@
+import { Modal } from 'react-bootstrap';
 import React, { Component } from 'react';
-import { Nav } from 'react-bootstrap';
-import { Link, Route, withRouter, Switch } from 'react-router-dom';
 import AddUserData from './AddUserData';
+import { Button } from 'react-bootstrap';
 
 class AddUser extends Component {
+    state = {
+        showModal: false
+    }
+
+    showModalHandler = () => {
+        this.setState({showModal:true})
+    }
+
+    hideModalHandler = () => {
+        this.setState({showModal:false})
+    }
 
     render() {
-        console.log(this.props.match.path);
         return (
-            <div>
-                <Nav>
-                    <Nav.Item>
-                        <Nav.Link as={Link} to={`${this.props.match.path}/addUser`}>Add User</Nav.Link>
-                    </Nav.Item>
-                </Nav>
-                <Switch>
-                    <Route path={`${this.props.match.path}/addUser`} component={AddUserData}/>
-                </Switch>
+            <div  className='float-right mb-3'>
+            <Button onClick = {this.showModalHandler}>Add User</Button>
+            <Modal show={this.state.showModal} onHide={this.hideModalHandler}>
+                <Modal.Header closeButton>Add User Data</Modal.Header>
+                <Modal.Body><AddUserData hideModal = {this.hideModalHandler}/></Modal.Body>
+            </Modal>
             </div>
 
         )
     }
 }
 
-export default withRouter(AddUser);
+export default AddUser;
