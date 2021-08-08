@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withTranslation } from 'react-i18next';
 
 class DisplayUsers extends Component {
     render() {
@@ -66,4 +67,4 @@ class DisplayUsers extends Component {
     }
 }
 
-export default DisplayUsers;
+export default withTranslation()(DisplayUsers);

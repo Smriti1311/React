@@ -1,21 +1,27 @@
 import React, { Component } from 'react';
+import { withTranslation } from 'react-i18next';
+
 import Tasklist from '../TaskList/TaskList';
 import './AddTask.css';
 
 class AddTask extends Component {
 
-    state = {
-        taskName: '',
-        owner: '',
-        taskList: [],
-        errorMsg: ''
+    constructor(props) {
+        super(props);
+        this.trans = props.t;
+        this.state = {
+            taskName: '',
+            owner: '',
+            taskList: [],
+            errorMsg: ''
+        }
     }
 
     inputRef = React.createRef();
 
-   componentDidMount(){
-       this.inputRef.current.focus();
-   }
+    componentDidMount() {
+        this.inputRef.current.focus();
+    }
 
     setValue = (event) => {
         this.setState({ [event.target.name]: event.target.value });
@@ -59,18 +65,18 @@ class AddTask extends Component {
                         type='text'
                         name='taskName'
                         value={this.state.taskName}
-                        placeholder={'Task..'}
+                        placeholder={this.trans("task") + '..'}
                         ref={this.inputRef}
                         onChange={this.setValue} />
                     <input className='addTaskInput'
                         type='text'
                         name='owner'
                         value={this.state.owner}
-                        placeholder={'Owner..'}
+                        placeholder={this.trans("owner") + '..'}
                         onChange={this.setValue} />
                     <button className='button'
                         type='submit'
-                    >Add Task</button>
+                    >{this.trans("addTask")}</button>
                 </form>
                 <p style={{ color: 'red', fontSize: '20px' }}>{this.state.errorMsg}</p>
                 <Tasklist taskList={this.state.taskList} deleteTask={this.deleteTaskHandler} />
@@ -80,4 +86,4 @@ class AddTask extends Component {
 }
 
 
-export default AddTask;
+export default withTranslation()(AddTask);

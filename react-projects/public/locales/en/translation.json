@@ -1,0 +1,8 @@
+{
+    "homeComponent" : "Home Component",
+    "click" : "Click",
+    "toDoList" : "To Do List",
+    "task" : "Task",
+    "owner" : "Owner",
+    "addTask" : "AddTask"
+}

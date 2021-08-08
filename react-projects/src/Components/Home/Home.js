@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const HomeComponent = () => {
     const inputRef = useRef(null);
+    const { t } = useTranslation();
 
     useEffect(() => {
         inputRef.current.focus();
@@ -13,10 +15,10 @@ const HomeComponent = () => {
 
     return (
         <h1 className='text-center'>
-            Home Component
+            {t("homeComponent")}
             <br />
             <input type='text' ref={inputRef} />
-            <button onClick={buttonClickHandler}>Click</button>
+            <button onClick={buttonClickHandler}>{t("click")}</button>
         </h1>
     )
 }

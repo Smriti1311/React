@@ -5,7 +5,6 @@ import Timer from './Components/Timer/Timer';
 import MapIterator from './Components/IterationUsingMap/MapIterator';
 import TodoList from './Components/ToDoList/TodoList';
 import VoteTemplate from './Components/VoteTemplate/VoteTemplate';
-import MapIterator from './Components/IterationUsingMap/MapIterator';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ProductList from './Components/Hooks/ProductList';
 import HomeComponent from './Components/Home/Home';
@@ -18,20 +17,7 @@ import VotingDone from './Components/VoteTemplate/VotingElegibility/VotingDone';
 function App() {
   return (
     <div className="App">
-      {/* <ContactUs /> */}
-      {/*  <FacebookLogin /> */}
-      {/* <Timer /> */}
-      {/* <TodoList /> */}
-      {/* <VoteTemplate />  */}
-      {/* <ComponentLifeCycle /> */}
-    {/* <MapIterator /> */} 
-     {/*<MapIterator /> */}
-      {/* <UserLogin /> */}
-      {/* <Form /> */ }
-      {/* <ProductList /> */ }
-     {/* <ContextProvider /> */}
-     {/*<ContextProvider /> */}
-       <Navbar >
+      <Navbar >
         <Container>
           <Navbar.Brand as={Link} to='/'>React-Bootstrap</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -43,7 +29,7 @@ function App() {
                 <NavDropdown.Item as={Link} to='/vote-template'>VoteTemplate</NavDropdown.Item>
                 <NavDropdown.Item as={Link} to='todolist'>To Do List</NavDropdown.Item>
                 <NavDropdown.Item as={Link} to='facebookLogin'>FaceBook Login</NavDropdown.Item>
-                <NavDropdown.Divider/>
+                <NavDropdown.Divider />
                 <NavDropdown.Item as={Link} to='react-topics'>React Topics</NavDropdown.Item>
               </NavDropdown>
             </Nav>
@@ -58,7 +44,6 @@ function App() {
         <Route exact path='/todolist' component={TodoList} />
         <Route exact path='/facebookLogin' component={FacebookLogin} />
         <Route path='/react-topics' component={ReactTopics} />
-        <Route  path='/react-topics' component={ReactTopics} />
         <Route exact path='/votingDone' component={VotingDone} />
         <Route path='/*' render={() => (<h2 className='text-center'>Component not defined</h2>)} />
       </Switch>
