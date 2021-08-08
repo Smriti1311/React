@@ -1,17 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter} from 'react-router-dom';
+import { I18nextProvider } from 'react-i18next';
+
+import './index.css';
+import App from './App';
+import i18n from './i18n/i18n';
+
 
 ReactDOM.render(
-  <BrowserRouter>
+
   <React.StrictMode>
+      <BrowserRouter>
+      <I18nextProvider>
     <App />
-  </React.StrictMode>
-  </BrowserRouter>,
+    </I18nextProvider>
+    </BrowserRouter>
+  </React.StrictMode>,
   document.getElementById('root')
 );
 
