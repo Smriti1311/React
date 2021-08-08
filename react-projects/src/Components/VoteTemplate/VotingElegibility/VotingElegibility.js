@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './VotingElegibility.css';
 
@@ -7,6 +7,7 @@ const VotingElegibility = () => {
     const [voterAge, setVoterAge] = useState('');
     const [votedMsg, setVotedMsg] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
+    const inputRef = useRef('');
     const history = useHistory();
 
     const voterAgeHandler = (event) => {
@@ -29,6 +30,10 @@ const VotingElegibility = () => {
 
     }
 
+    useEffect(()=>{
+        inputRef.current.focus();
+    },[])
+
     return (
         <div className='container'>
             <h1 className='header'>Vote Here!!</h1>
@@ -38,6 +43,7 @@ const VotingElegibility = () => {
                 min='1'
                 max='120'
                 value={voterAge}
+                ref={inputRef}
                 onChange={voterAgeHandler} /></div>
             <div className='errorMessage'>{errorMsg}</div>
             <button className='button' onClick={hasVotedHandler}

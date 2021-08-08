@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import CreateAccount from '../CreateAccount/CreateAccount';
 import './Login.css';
 
@@ -7,6 +7,7 @@ const Login = () => {
     const [password, setPassword] = useState('Password');
     const [showText, setShowText] = useState(true);
     const [createAccount, setcreateAccount] = useState(false);
+    const inputRef = useRef(null);
 
     const setEmailOrPhoneHandler = (event) => {
         setEmailOrPhone(event.target.value);
@@ -29,10 +30,14 @@ const Login = () => {
         setcreateAccount(true);
     }
 
+    useEffect(()=>{
+        inputRef.current.focus();
+    },[])
+
     return (
         <div className='LoginContainer'>
             <form>
-                <input className='Input' type='text' value={emailOrPhone} onChange={setEmailOrPhoneHandler} onClick={removeDefaultEmailOrPhoneHandler}></input>
+                <input className='Input' type='text' ref={inputRef} value={emailOrPhone} onChange={setEmailOrPhoneHandler} onClick={removeDefaultEmailOrPhoneHandler}></input>
                 <input className='Input' type={showText ? 'type' : 'password'} value={password} onChange={setPasswordHandler} onClick={removeDefaultPasswordHandler} />
                 <button className='Button'>Log In</button>
             </form>

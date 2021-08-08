@@ -11,18 +11,11 @@ class AddTask extends Component {
         errorMsg: ''
     }
 
-    /*  taskNameHandler = (event) => {
-          let taskName = event.target.value;
-          this.setState({
-              taskName: taskName,
-              errorMsg: ''
-          });
-      }
-  
-      ownerNameHandler = (event) => {
-          let ownerName = event.target.value;
-          this.setState({ ownerName: ownerName });
-      } */
+    inputRef = React.createRef();
+
+   componentDidMount(){
+       this.inputRef.current.focus();
+   }
 
     setValue = (event) => {
         this.setState({ [event.target.name]: event.target.value });
@@ -67,6 +60,7 @@ class AddTask extends Component {
                         name='taskName'
                         value={this.state.taskName}
                         placeholder={'Task..'}
+                        ref={this.inputRef}
                         onChange={this.setValue} />
                     <input className='addTaskInput'
                         type='text'

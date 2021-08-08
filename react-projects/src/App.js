@@ -5,6 +5,7 @@ import Timer from './Components/Timer/Timer';
 import MapIterator from './Components/IterationUsingMap/MapIterator';
 import TodoList from './Components/ToDoList/TodoList';
 import VoteTemplate from './Components/VoteTemplate/VoteTemplate';
+import MapIterator from './Components/IterationUsingMap/MapIterator';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ProductList from './Components/Hooks/ProductList';
 import HomeComponent from './Components/Home/Home';
@@ -24,6 +25,7 @@ function App() {
       {/* <VoteTemplate />  */}
       {/* <ComponentLifeCycle /> */}
     {/* <MapIterator /> */} 
+     {/*<MapIterator /> */}
       {/* <UserLogin /> */}
       {/* <Form /> */ }
       {/* <ProductList /> */ }
@@ -56,6 +58,7 @@ function App() {
         <Route exact path='/todolist' component={TodoList} />
         <Route exact path='/facebookLogin' component={FacebookLogin} />
         <Route path='/react-topics' component={ReactTopics} />
+        <Route  path='/react-topics' component={ReactTopics} />
         <Route exact path='/votingDone' component={VotingDone} />
         <Route path='/*' render={() => (<h2 className='text-center'>Component not defined</h2>)} />
       </Switch>

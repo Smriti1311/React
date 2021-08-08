@@ -1,19 +1,33 @@
+import { Modal } from 'react-bootstrap';
 import React, { Component } from 'react';
-import { Nav } from 'react-bootstrap';
-import {Link, withRouter} from 'react-router-dom';
+import AddUserData from './AddUserData';
+import { Button } from 'react-bootstrap';
 
-class AddUser extends Component{
-    
-    render(){
-        console.log(this.props.match);
-        return(
-            <Nav>
-                <Nav.Item>
-                    <Nav.Link as={Link} to={`${this.props.match}`}></Nav.Link>
-                </Nav.Item>
-            </Nav>
+class AddUser extends Component {
+    state = {
+        showModal: false
+    }
+
+    showModalHandler = () => {
+        this.setState({showModal:true})
+    }
+
+    hideModalHandler = () => {
+        this.setState({showModal:false})
+    }
+
+    render() {
+        return (
+            <div  className='float-right mb-3'>
+            <Button onClick = {this.showModalHandler}>Add User</Button>
+            <Modal show={this.state.showModal} onHide={this.hideModalHandler}>
+                <Modal.Header closeButton>Add User Data</Modal.Header>
+                <Modal.Body><AddUserData hideModal = {this.hideModalHandler}/></Modal.Body>
+            </Modal>
+            </div>
+
         )
     }
 }
 
-export default withRouter(AddUser);
+export default AddUser;

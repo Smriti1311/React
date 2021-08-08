@@ -12,6 +12,11 @@ import i18n from './i18n/i18n';
 
 ReactDOM.render(
 
+import ErrorBoundary from './Components/Error Boundary/errorBoundary';
+
+ReactDOM.render(
+  <ErrorBoundary>
+  <BrowserRouter>
   <React.StrictMode>
       <BrowserRouter>
       <I18nextProvider>
@@ -19,6 +24,9 @@ ReactDOM.render(
     </I18nextProvider>
     </BrowserRouter>
   </React.StrictMode>,
+  </React.StrictMode>
+  </BrowserRouter>
+  </ErrorBoundary>,
   document.getElementById('root')
 );
 
