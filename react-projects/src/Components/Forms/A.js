@@ -59,7 +59,7 @@ export default class FormValidationsComponent extends Component {
 
       console.log("Constraint", object);
 
-        let result = validate(object, {[field]: constraint});
+        let result = (object, {[field]: constraint});
 
         console.log('validate=',result);
         if (result) {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FormControl, FormGroup, FormLabel, Form, Row, Button } from 'react-bootstrap';
 import axios from 'axios';
+import validate from 'validate.js';
 
 class AddUserData extends Component {
 
@@ -11,10 +12,42 @@ class AddUserData extends Component {
         phoneNumber: ''
     }
 
-      setValueHandler = (event) => {
+    constraints = {
+        firstName: {
+            presence: true,
+            length: {
+                minimum: 4,
+                message: 'must be atleast 4 characters'
+            }
+        },
+        lastName: {
+            presence: true,
+            length: {
+                minimum: 4,
+                message: 'must be atleast 4 characters'
+            }
+        },
+        email: {
+            email: {
+                message: "doesn't look like a valid email"
+            }
+        }
+    }
+
+    setValueHandler = (event) => {
         let key = event.target.name;
         let value = event.target.value;
+        let result = this.validateItem(key, value);
+        console.log(result);
         this.setState({ [key]: value });
+    }
+
+    validateItem = (key, value) => {
+        let validateObj = {};
+        validateObj[key] = value;
+        let constraint = this.constraints[key]
+        return validate(validateObj,{[key] :constraint});
+
     }
 
     submitDataHandler = (event) => {
@@ -26,15 +59,16 @@ class AddUserData extends Component {
             phoneNumber: this.state.phoneNumber
         }
         console.log(userData);
-        axios.post('https://react-fceb0-default-rtdb.firebaseio.com/users.json',userData)
-        .then(res => {
-            console.log(res)
-        })
-            this.props.hideModal();
+        axios.post('https://react-fceb0-default-rtdb.firebaseio.com/users.json', userData)
+            .then(res => {
+                console.log(res)
+            })
+        this.props.hideModal();
+        this.props.shouldUserDataUpdateHandler();
     }
 
     render() {
-        const {firstName, lastName, email, phoneNumber} = this.state;
+        const { firstName, lastName, email, phoneNumber } = this.state;
         return (
             <Form onSubmit={this.submitDataHandler}>
                 <FormGroup as={Row} className="mb-3">
@@ -53,7 +87,7 @@ class AddUserData extends Component {
                     <FormLabel>Phone Number</FormLabel>
                     <FormControl name='phoneNumber' type='input' value={phoneNumber} onChange={this.setValueHandler} />
                 </FormGroup>
-                <Button type='submit'>Submit</Button>
+                <Button type='submit' disabled={!firstName || !lastName}>Submit</Button>
             </Form>
 
         )
