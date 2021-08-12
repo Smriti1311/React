@@ -10,7 +10,7 @@ class DisplayUsers extends Component {
                     && user.lastName.toLowerCase().indexOf(searchText) === -1 
                     && user.phoneNumber.indexOf(searchText) === -1 
                     && user.email.indexOf(searchText) === -1 ) {
-                    return;
+                    return null;
                 }}
           return  <tr key={user.userId}>
                 <th scope='row'>

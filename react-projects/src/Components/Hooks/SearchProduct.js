@@ -1,5 +1,5 @@
-import React, { Fragment, useEffect, useReducer, useState } from 'react';
-import Form, { FormCheck, FormControl, FormGroup, FormLabel } from 'react-bootstrap';
+import React, { Fragment, useEffect,  useState } from 'react';
+import { FormCheck, FormControl, FormGroup, FormLabel } from 'react-bootstrap';
 
 const SearchProducts = (props) => {
 
@@ -17,7 +17,7 @@ const SearchProducts = (props) => {
 
     useEffect(()=>{
         searchProductProp(searchProduct, inStockCheck)
-    },[inputValues])
+    },[inputValues.searchProduct])
         
         
      /*   ,(name,value)=>{

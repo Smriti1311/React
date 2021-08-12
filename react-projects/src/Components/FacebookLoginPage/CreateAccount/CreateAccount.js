@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import './CreateAccount.scss';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import { ButtonGroup, Dropdown, DropdownButton } from 'react-bootstrap';
+import { Dropdown, DropdownButton } from 'react-bootstrap';
 import { FormControl, FormGroup, FormLabel } from 'react-bootstrap';
-import DropdownToggle from 'react-bootstrap/esm/DropdownToggle';
 import { InputGroup } from 'react-bootstrap';
 
 class CreateAccount extends Component {

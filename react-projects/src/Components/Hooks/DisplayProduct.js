@@ -1,19 +1,18 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
-import ProductRow from './ProductRow';
-
 
 const DisplayProducts = (props) => {
 
 const displayProduct = props.productList ? ( 
     props.productList.map((product,index)=>{
         if(props.inStockOnly && !product.stocked){
-            return;
+            return null;
         }
         if(product.category.toLowerCase().indexOf(props.searchText) === -1 && product.name.toLowerCase().indexOf(props.searchText) === -1){
-            return;
+            return null;
         }
       // return <ProductRow key={product.category+index} productRow = {product} deleteProduct={}/>
+      return null;
     })) : <tr><td colSpan="4">No Data Found</td></tr>;
 
 

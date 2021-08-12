@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
-import { version } from 'react-dom';
+import React from 'react';
 import { NameContext, VersionContext } from './ContextProvider';
 
-const ContextConsumer = (props) => {
+const ContextConsumer = () => {
     return (
         <div>
             <NameContext.Consumer>

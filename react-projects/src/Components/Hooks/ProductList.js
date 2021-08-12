@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import DisplayProducts from './DisplayProduct';
-import DisplayProduct from './DisplayProduct';
 import SearchProducts from './SearchProduct';
 
 const ProductList = () => {
@@ -26,9 +25,7 @@ const ProductList = () => {
       //  setSearchValues({...searchValues,[key]:value});
     }
 
-    const deleteProductHandler = () => {
-        
-    }
+  
 
     return(
         <div>
